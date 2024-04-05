@@ -1,0 +1,62 @@
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    width: 100%;
+}
+.game-section,
+.hangman-section {
+    flex: 1;
+}
+#hangman-container {
+    text-align: center;
+    background-color: #def0ea;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.word-display {
+    margin: 20px 0;
+    font-size: 24px;
+}
+.wrong-letters {
+    margin-top: 10px;
+    font-size: 18px;
+    color: red;
+}
+#tries {
+    margin-top: 10px;
+    font-size: 16px;
+}
+#letter-input {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 16px;
+}
+#guess-btn, #reset-btn {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #45a049;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+#guess-btn:hover, #reset-btn:hover {
+    background-color: #45a049;
+}
+.hangman-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
