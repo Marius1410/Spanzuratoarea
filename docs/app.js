@@ -71,4 +71,4 @@ letterInput.addEventListener('keypress', function(event) {
     }
 });
 
-letterInput.setAttribute("maxlength", "1");
+letterInput.setAttribute("maxlength", "30");
