@@ -70,3 +70,5 @@ letterInput.addEventListener('keypress', function(event) {
         guessLetter();
     }
 });
+
+letterInput.setAttribute("maxlength", "30");
