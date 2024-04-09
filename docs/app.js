@@ -1,4 +1,4 @@
-const words = ["programare", "javascript", "dezvoltare", "spanzuratoarea", "computers"];
+const words = ["programare", "javascript", "dezvoltare", "spanzuratoarea", "computer", "masina", "televizor", "avion",];
 let selectedWord = "";
 let guessedWord = [];
 let wrongLetters = [];
