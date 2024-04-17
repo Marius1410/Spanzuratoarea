@@ -54,8 +54,8 @@ function guessLetter() {
             wrongLetters.push(letter);
             remainingTries--;
         }
-    } else { // Utilizatorul a introdus un șir de litere
-        let j = 0; // Index pentru litera din șirul introdus
+    } else { 
+        let j = 0;
         for (let i = 0; i < selectedWord.length && j < input.length; i++) {
             if (selectedWord[i] === input[j]) {
                 guessedWord[i] = input[j];
