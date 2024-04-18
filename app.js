@@ -31,9 +31,9 @@ function updateDisplay() {
 function guessLetter() {
     const input = letterInput.value.trim().toUpperCase();
     
-    if (input === selectedWord) {
+    if (input === selectedWord) { // Utilizatorul a ghicit cuvântul întreg
         guessedWord = input.split('');
-    } else if (input.length <= 1) { 
+    } else if (input.length <= 1) { // Verificăm dacă input-ul este o singură literă sau cuvântul întreg
         const letter = input;
 
         if (!letter.match(/[A-Z]/)) {
@@ -81,4 +81,3 @@ letterInput.addEventListener('keypress', function(event) {
     }
 });
 letterInput.setAttribute("maxlength", "10");
-
