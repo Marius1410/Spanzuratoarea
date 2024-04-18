@@ -35,7 +35,7 @@ function updateDisplay() {
 function guessLetter() {
     const input = letterInput.value.trim().toUpperCase();
     
-    if (input.length !== 1) { 
+    if (input.length !== 1) {
         alert('Introdu doar o singură literă.');
         return;
     }
@@ -60,11 +60,10 @@ function guessLetter() {
         wrongLetters.push(letter);
         remainingTries--;
     }
-    
+
     letterInput.value = "";
     updateDisplay();
 }
-
 function resetGame() {
     letterInput.value = "";
     initializeGame();
