@@ -1,4 +1,5 @@
-const words = ["programare", "javascript", "dezvoltare", "spanzuratoarea", "computers"];
+const words = ["programare", "javascript", "dezvoltare", "spanzuratoarea", "computers", "electronica", "informatizare", "tehnologie", "dezvoltator", "aplicatie", "inteligenta", "algoritm", "retea", "server", "java"];
+
 let selectedWord = "";
 let guessedWord = [];
 let wrongLetters = [];
@@ -35,7 +36,7 @@ function updateDisplay() {
 function guessLetter() {
     const input = letterInput.value.trim().toUpperCase();
     
-    if (input.length !== 1) {
+    if (input.length !== 1) { 
         alert('Introdu doar o singură literă.');
         return;
     }
@@ -64,6 +65,7 @@ function guessLetter() {
     letterInput.value = "";
     updateDisplay();
 }
+
 function resetGame() {
     letterInput.value = "";
     initializeGame();
@@ -72,3 +74,11 @@ function resetGame() {
 initializeGame();
 guessBtn.addEventListener('click', guessLetter);
 resetBtn.addEventListener('click', resetGame);
+
+letterInput.addEventListener('input', function(event) {
+    const input = letterInput.value.trim().toUpperCase();
+    
+    if (input.length > 1) {
+        letterInput.value = input.slice(0, 1);
+    }
+});
