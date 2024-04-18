@@ -9,6 +9,7 @@ const remainingTriesDisplay = document.getElementById("remaining-tries");
 const letterInput = document.getElementById("letter-input");
 const guessBtn = document.getElementById("guess-btn");
 const resetBtn = document.getElementById("reset-btn");
+
 function initializeGame() {
     selectedWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
     guessedWord = Array(selectedWord.length).fill('_');
@@ -16,10 +17,12 @@ function initializeGame() {
     remainingTries = 6;
     updateDisplay();
 }
+
 function updateDisplay() {
     wordDisplay.textContent = guessedWord.join(' ');
     wrongLettersDisplay.textContent = wrongLetters.join(', ');
     remainingTriesDisplay.textContent = remainingTries;
+    
     if (guessedWord.join('') === selectedWord) {
         alert('Felicitări! Ai câștigat!');
         initializeGame();
@@ -28,12 +31,11 @@ function updateDisplay() {
         initializeGame();
     }
 }
+
 function guessLetter() {
     const input = letterInput.value.trim().toUpperCase();
     
-    if (input === selectedWord) { // Utilizatorul a ghicit cuvântul întreg
-        guessedWord = input.split('');
-    } else if (input.length <= 1) { // Verificăm dacă input-ul este o singură literă sau cuvântul întreg
+    if (input.length === 1) { // Introduce o singură literă
         const letter = input;
 
         if (!letter.match(/[A-Z]/)) {
@@ -54,14 +56,32 @@ function guessLetter() {
             wrongLetters.push(letter);
             remainingTries--;
         }
-    } else { // Utilizatorul a introdus un șir de litere
-        let j = 0; // Index pentru litera din șirul introdus
-        for (let i = 0; i < selectedWord.length && j < input.length; i++) {
-            if (selectedWord[i] === input[j]) {
-                guessedWord[i] = input[j];
-                j++;
+    } else if (input.length > 1 && input.length === selectedWord.length) { // Introduce un șir de litere
+        for (let i = 0; i < input.length; i++) {
+            const letter = input[i];
+
+            if (!letter.match(/[A-Z]/)) {
+                alert('Introdu doar litere valide.');
+                return;
+            }
+            if (guessedWord.includes(letter) || wrongLetters.includes(letter)) {
+                alert('Ai introdus deja această literă.');
+                return;
+            }
+            if (selectedWord.includes(letter)) {
+                for (let j = 0; j < selectedWord.length; j++) {
+                    if (selectedWord[j] === letter) {
+                        guessedWord[j] = letter;
+                    }
+                }
+            } else {
+                wrongLetters.push(letter);
+                remainingTries--;
             }
         }
+    } else {
+        alert('Introdu o singură literă sau un șir de litere de lungimea cuvântului.');
+        return;
     }
     
     letterInput.value = "";
@@ -72,6 +92,7 @@ function resetGame() {
     letterInput.value = "";
     initializeGame();
 }
+
 initializeGame();
 guessBtn.addEventListener('click', guessLetter);
 resetBtn.addEventListener('click', resetGame);
